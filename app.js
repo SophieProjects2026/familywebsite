@@ -218,6 +218,7 @@ const topicDetailHeroEl = document.querySelector("#topic-detail-hero");
 const detailTitleEl = document.querySelector("#detail-title");
 const detailUpdatedEl = document.querySelector("#detail-updated");
 const detailDescriptionEl = document.querySelector("#detail-description");
+const underConstructionNoteEl = document.querySelector("#under-construction-note");
 const videoListEl = document.querySelector("#video-list");
 const rednoteListEl = document.querySelector("#rednote-list");
 const pdfListEl = document.querySelector("#pdf-list");
@@ -299,6 +300,7 @@ function openTopic(topicId) {
   detailTitleEl.textContent = topic.title;
   detailUpdatedEl.textContent = `Last updated ${getLastUpdatedText(topic.lastUpdated)}`;
   detailDescriptionEl.textContent = topic.description;
+  underConstructionNoteEl.hidden = hasTopicContent(topic);
   videoListEl.innerHTML = renderVideoCards(topic.videos);
   rednoteListEl.innerHTML = renderLinkCards(topic.rednotePosts, "A place for a favorite RedNote / Xiaohongshu post.");
   pdfListEl.innerHTML = renderLinkCards(topic.pdfs, "A place for a helpful PDF or family document.");
@@ -400,6 +402,31 @@ function renderNotes(notes) {
       ${notes.map((note) => `<li>${note}</li>`).join("")}
     </ul>
   `;
+}
+
+function hasTopicContent(topic) {
+  return (
+    hasLinkedItems(topic.videos) ||
+    hasLinkedItems(topic.rednotePosts) ||
+    hasLinkedItems(topic.pdfs) ||
+    hasLinkedItems(topic.photos) ||
+    hasLinkedItems(topic.links) ||
+    hasRealNotes(topic.notes) ||
+    Boolean(topic.timeline && topic.timeline.length > 0)
+  );
+}
+
+function hasLinkedItems(items) {
+  return Array.isArray(items) && items.some((item) => item.url && item.url.trim());
+}
+
+function hasRealNotes(notes) {
+  const starterNotes = new Set([
+    "This page is ready for favorite resources, observations, and family notes.",
+    "Add new thoughts here as this topic grows."
+  ]);
+
+  return Array.isArray(notes) && notes.some((note) => note && note.trim() && !starterNotes.has(note.trim()));
 }
 
 function renderTimeline(timeline) {

@@ -438,6 +438,19 @@ main {
   line-height: 1.55;
 }
 
+.under-construction-note {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(102, 127, 85, 0.2);
+  border-left: 3px solid rgba(173, 103, 67, 0.45);
+  border-radius: var(--radius);
+  background: rgba(245, 232, 212, 0.52);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
 .tab-button {
   min-height: clamp(13rem, 29vw, 18rem);
   border: 1px solid var(--line);

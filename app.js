@@ -146,8 +146,8 @@ function createTopic(id, title, customData = {}) {
     // Add photo gallery images here later.
     // Example:
     // photos: [
-    //   { title: "Garden photo", url: "images/gallery/garden.jpg", caption: "Spring planting" },
-    //   { title: "Family walk", url: "images/gallery/walk.jpg", caption: "A favorite afternoon" }
+    //   { title: "Garden photo", url: "images/topics/gardening.jpg", caption: "Spring planting" },
+    //   { title: "Family walk", url: "images/topics/travel-memories.jpg", caption: "A favorite afternoon" }
     // ]
     photos: [
       { title: "Photo space", url: "", caption: "" }
@@ -237,7 +237,7 @@ function renderTabs() {
       return `
         <button
           class="tab-button ${isActive ? "active" : ""}"
-          style="background-image: linear-gradient(180deg, rgba(47, 38, 28, 0.12), rgba(47, 38, 28, 0.68)), url('${family.image}')"
+          style="background-image: ${backgroundWithImages("linear-gradient(180deg, rgba(47, 38, 28, 0.12), rgba(47, 38, 28, 0.68))", family.image, homeImages.defaultTopic)}"
           type="button"
           role="tab"
           aria-selected="${isActive}"
@@ -254,7 +254,12 @@ function renderTabs() {
 function renderTopics() {
   const family = getActiveFamily();
 
-  sectionBannerPhotoEl.style.backgroundImage = `linear-gradient(180deg, rgba(47, 38, 28, 0.04), rgba(47, 38, 28, 0.38)), url('${family.headerImage}')`;
+  sectionBannerPhotoEl.style.backgroundImage = backgroundWithImages(
+    "linear-gradient(180deg, rgba(47, 38, 28, 0.04), rgba(47, 38, 28, 0.38))",
+    family.headerImage,
+    family.image,
+    homeImages.defaultTopic
+  );
   sectionBannerTitleEl.textContent = family.tabName;
   sectionBannerIntroEl.textContent = family.intro;
   sectionBannerNoteEl.textContent = family.privacyNote || "";
@@ -268,7 +273,7 @@ function renderTopics() {
     .map((topic) => {
       return `
         <button class="topic-card" type="button" data-topic-id="${topic.id}">
-          <span class="topic-thumb" style="background-image: linear-gradient(135deg, rgba(109, 138, 95, 0.2), rgba(229, 184, 95, 0.16)), url('${topic.image}'), url('${homeImages.defaultTopic}')"></span>
+          <span class="topic-thumb" style="background-image: ${backgroundWithImages("linear-gradient(135deg, rgba(109, 138, 95, 0.2), rgba(229, 184, 95, 0.16))", topic.image, homeImages.defaultTopic)}"></span>
           <span class="topic-copy">
             <h3>${topic.title}</h3>
             <p>${topic.description}</p>
@@ -286,7 +291,11 @@ function openTopic(topicId) {
   if (!topic) return;
 
   detailOwnerEl.textContent = family.tabName;
-  topicDetailHeroEl.style.backgroundImage = `linear-gradient(180deg, rgba(47, 38, 28, 0.04), rgba(47, 38, 28, 0.42)), url('${topic.image}'), url('${homeImages.defaultTopic}')`;
+  topicDetailHeroEl.style.backgroundImage = backgroundWithImages(
+    "linear-gradient(180deg, rgba(47, 38, 28, 0.04), rgba(47, 38, 28, 0.42))",
+    topic.image,
+    homeImages.defaultTopic
+  );
   detailTitleEl.textContent = topic.title;
   detailUpdatedEl.textContent = `Last updated ${getLastUpdatedText(topic.lastUpdated)}`;
   detailDescriptionEl.textContent = topic.description;
@@ -452,6 +461,31 @@ function getActiveFamily() {
   return familyData.find((family) => family.id === activeFamilyId) || familyData[0];
 }
 
+function getImageCandidates(...paths) {
+  const candidates = [];
+
+  paths.filter(Boolean).forEach((path) => {
+    candidates.push(path);
+
+    const fileName = path.split("/").pop();
+    if (fileName && fileName !== path) {
+      candidates.push(fileName);
+    }
+  });
+
+  return [...new Set(candidates)];
+}
+
+function imageLayers(...paths) {
+  return getImageCandidates(...paths)
+    .map((path) => `url('${path}')`)
+    .join(", ");
+}
+
+function backgroundWithImages(gradient, ...paths) {
+  return `${gradient}, ${imageLayers(...paths)}`;
+}
+
 tabsEl.addEventListener("click", (event) => {
   const tabButton = event.target.closest("[data-family-id]");
 
@@ -478,4 +512,8 @@ backButtonEl.addEventListener("click", () => {
 
 renderTabs();
 renderTopics();
-homeHeroPhotoEl.style.backgroundImage = `linear-gradient(180deg, rgba(38, 31, 22, 0.08) 0%, rgba(38, 31, 22, 0.2) 42%, rgba(38, 31, 22, 0.72) 100%), url('${homeImages.hero}')`;
+homeHeroPhotoEl.style.backgroundImage = backgroundWithImages(
+  "linear-gradient(180deg, rgba(38, 31, 22, 0.08) 0%, rgba(38, 31, 22, 0.2) 42%, rgba(38, 31, 22, 0.72) 100%)",
+  homeImages.hero,
+  homeImages.defaultTopic
+);

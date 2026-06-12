@@ -1,0 +1,34 @@
+# Local workspace and tool folders
+.codex/
+.agents/
+
+# Original uploaded photo archive.
+# The website uses copied/renamed images in images/ and images/topics/ instead.
+images/gallery/
+
+# Temporary contact sheets made while reviewing photos
+gallery-contact-*.jpg
+image-contact-sheet.jpg
+new-upload-contact-sheet.jpg
+
+# Operating system clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor and local settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependency and build folders, in case this project is expanded later
+node_modules/
+dist/
+build/
+.cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp

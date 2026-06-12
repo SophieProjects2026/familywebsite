@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Manager | The D and L Family Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="content-manager.css">
+  <link rel="stylesheet" href="auth.css">
+  <script src="auth-config.js" defer></script>
+  <script src="auth.js" defer></script>
+</head>
+<body class="auth-locked">
+  <main class="manager-shell">
+    <section class="manager-hero">
+      <p class="eyebrow">Family content manager</p>
+      <h1>Add to the family garden</h1>
+      <p>No coding needed. Choose a topic, add content, then save the JSON file and update the website.</p>
+    </section>
+
+    <section class="manager-grid">
+      <form class="manager-card" id="content-form">
+        <label>
+          Topic
+          <select id="topic-select" required></select>
+        </label>
+
+        <label>
+          Content type
+          <select id="content-type" required>
+            <option value="videos">YouTube video</option>
+            <option value="rednotePosts">RedNote / Xiaohongshu link</option>
+            <option value="photos">Photo</option>
+            <option value="notes">Note</option>
+          </select>
+        </label>
+
+        <label class="title-field">
+          Title
+          <input id="content-title" type="text" placeholder="Example: Favorite practice video">
+        </label>
+
+        <label class="url-field">
+          Link or photo path
+          <input id="content-url" type="text" placeholder="Example: https://youtu.be/... or images/gallery/photo.jpg">
+        </label>
+
+        <label class="caption-field">
+          Photo caption
+          <input id="content-caption" type="text" placeholder="Example: Spring garden afternoon">
+        </label>
+
+        <label class="note-field">
+          Note
+          <textarea id="content-note" rows="5" placeholder="Write a family note, reminder, or reflection."></textarea>
+        </label>
+
+        <button class="manager-primary" type="submit">Add Content</button>
+      </form>
+
+      <section class="manager-card">
+        <p class="eyebrow">Saved items</p>
+        <div class="manager-preview" id="manager-preview"></div>
+      </section>
+    </section>
+
+    <section class="manager-actions">
+      <button type="button" id="load-json">Load JSON</button>
+      <button type="button" id="save-json">Save JSON</button>
+      <button type="button" id="update-app">Update Website</button>
+    </section>
+
+    <section class="manager-help">
+      <h2>How to use</h2>
+      <ol>
+        <li>Add content with the form.</li>
+        <li>Click <strong>Save JSON</strong> to save `family-content.json`.</li>
+        <li>Click <strong>Update Website</strong> and choose `app.js` when asked.</li>
+        <li>Open `index.html` to see the updated family website.</li>
+      </ol>
+      <p>
+        If your browser does not support direct file saving, the manager will download the JSON file instead.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <p>A living family knowledge garden</p>
+      <button class="logout-button" type="button" data-logout>Log Out</button>
+    </footer>
+  </main>
+
+  <script src="content-manager.js"></script>
+</body>
+</html>

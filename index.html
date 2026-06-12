@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The D and L Family Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+  <script src="auth-config.js" defer></script>
+  <script src="auth.js" defer></script>
+</head>
+<body class="auth-locked">
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="The D and L Family Website home">
+        <span class="brand-mark">D&L</span>
+        <span>The D and L Family Website</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="family-tabs">
+        <span class="sr-only">Open family sections</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <section class="hero photo-hero" id="home">
+      <div class="hero-photo" id="home-hero-photo" role="img" aria-label="Family photo placeholder"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">A family knowledge garden</p>
+        <h1>Welcome to The D and L Family Website</h1>
+        <p>
+          A living family library of learning, memories, reflections, and plans.
+        </p>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="home-notes" aria-label="Family homepage notes">
+      <article class="quote-panel">
+        <p class="eyebrow">Featured quote</p>
+        <blockquote>
+          "Learning, growing, and sharing together."
+        </blockquote>
+      </article>
+    </section>
+
+    <section class="family-panel" aria-labelledby="sections-title">
+      <div class="section-heading">
+        <p class="eyebrow">Choose a family space</p>
+        <h2 id="sections-title">Explore the family library</h2>
+      </div>
+
+      <div class="tabs" id="family-tabs" role="tablist" aria-label="Family knowledge garden sections"></div>
+      <div class="section-banner" id="section-banner">
+        <div class="section-banner-photo" id="section-banner-photo" role="img" aria-label="Section image placeholder"></div>
+        <div class="section-banner-copy">
+          <p class="eyebrow">Garden section</p>
+          <h2 id="section-banner-title"></h2>
+          <p id="section-banner-intro"></p>
+          <p class="section-privacy-note" id="section-banner-note" hidden></p>
+        </div>
+      </div>
+      <div class="topic-grid" id="topic-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="home-list-panel recent-panel" aria-labelledby="recent-title">
+      <div>
+        <p class="eyebrow">New in the garden</p>
+        <h2 id="recent-title">Recently Added</h2>
+      </div>
+      <div class="home-list-grid">
+        <article>
+          <h3>Family Story Timeline</h3>
+          <p>Milestones from marriage, birth, violin, career, and this website.</p>
+        </article>
+        <article>
+          <h3>Photo Library</h3>
+          <p>Garden, travel, learning, family, recipe, and memory photos.</p>
+        </article>
+        <article>
+          <h3>Knowledge Topics</h3>
+          <p>A growing set of topic pages for learning and reflection.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-view" id="topic-detail" aria-live="polite" hidden>
+      <button class="back-button" id="back-button" type="button">Back to the garden</button>
+      <article class="detail-card">
+        <div class="topic-detail-hero" id="topic-detail-hero" role="img" aria-label="Topic image placeholder"></div>
+        <div class="topic-detail-intro">
+          <p class="detail-owner" id="detail-owner"></p>
+          <h2 id="detail-title"></h2>
+          <p class="detail-updated" id="detail-updated"></p>
+          <p id="detail-description"></p>
+        </div>
+
+        <div class="resource-layout">
+          <section class="resource-section" aria-labelledby="videos-title">
+            <h3 id="videos-title">Videos</h3>
+            <div class="resource-grid" id="video-list"></div>
+          </section>
+
+          <section class="resource-section" aria-labelledby="rednote-title">
+            <h3 id="rednote-title">RedNote / Xiaohongshu Posts</h3>
+            <div class="resource-grid" id="rednote-list"></div>
+          </section>
+
+          <section class="resource-section" aria-labelledby="pdfs-title">
+            <h3 id="pdfs-title">PDFs</h3>
+            <div class="resource-grid" id="pdf-list"></div>
+          </section>
+
+          <section class="resource-section" aria-labelledby="photos-title">
+            <h3 id="photos-title">Photos</h3>
+            <div class="resource-grid" id="photo-list"></div>
+          </section>
+
+          <section class="resource-section" aria-labelledby="links-title">
+            <h3 id="links-title">External Links</h3>
+            <div class="resource-grid" id="link-list"></div>
+          </section>
+
+          <section class="resource-section timeline-section" id="timeline-section" aria-labelledby="timeline-title" hidden>
+            <h3 id="timeline-title">Family Timeline</h3>
+            <div class="timeline-list" id="timeline-list"></div>
+          </section>
+
+          <section class="resource-section notes-section" aria-labelledby="notes-title">
+            <h3 id="notes-title">Personal Notes</h3>
+            <div id="notes-list"></div>
+          </section>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>A living family knowledge garden</p>
+    <p><a href="content-manager.html">Content Manager</a></p>
+    <button class="logout-button" type="button" data-logout>Log Out</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -40,8 +40,7 @@ const familyData = [
             },
             {
               title: "Suzuki Book 3 Full Play Along",
-              url: "",
-              note: "Add the Suzuki Book 3 full play-along link here when ready."
+              url: "https://youtu.be/1Uq4wMes8R0?si=6zPKnmvnmfBpg2vV"
             }
           ],
           oneByOneBooks: [
@@ -49,53 +48,54 @@ const familyData = [
               title: "Suzuki Book 1",
               url: "https://youtu.be/9z9vg56vNgI?si=fXTkHJW8wohD4_ty",
               songs: createSuzukiSongs([
-                "Twinkle, Twinkle, Little Star Variations",
-                "Lightly Row",
-                "Song of the Wind",
-                "Go Tell Aunt Rhody",
-                "O Come, Little Children",
-                "May Song",
-                "Long, Long Ago",
-                "Allegro",
-                "Perpetual Motion",
-                "Allegretto",
-                "Andantino",
-                "Etude",
-                "Minuet 1",
-                "Minuet 2",
-                "Minuet 3",
-                "The Happy Farmer",
-                "Gavotte"
+                { title: "Twinkle, Twinkle Little Star with Variations", url: "https://youtu.be/9z9vg56vNgI?si=SB8NdDB9dkdB2PoY" },
+                { title: "Lightly Row", url: "https://youtu.be/pqM-Y7kQ0ac?si=2cGE5zu2Rqfbmr6Q" },
+                { title: "Song of the Wind", url: "https://youtu.be/C_LppvsWpcA?si=OxhqR3CZ7IjZCqTz" },
+                { title: "Go Tell Aunt Rhody", url: "https://youtu.be/f5HW9tV5KYo?si=bX6m1u_3kBeUDT6l" },
+                { title: "Oh Come Little Children", url: "https://youtu.be/TUgF0aWsGfo?si=jqKFRZHoQwIVZVmH" },
+                { title: "May Song", url: "https://youtu.be/52AsFJ-vGPs?si=ascHQ7lFOeFyxQLD" },
+                { title: "Long, Long Ago", url: "https://youtu.be/lRK1yB_zb7Y?si=rIZo5nnqaDfRLOl8" },
+                { title: "Allegro", url: "https://youtu.be/bNAt_rn9IXE?si=IRqnkm3tvwH6BzV5" },
+                { title: "Perpetual Motion", url: "https://youtu.be/qTNc8xC_52k?si=Hh5b5yn7-Kb6x3Al" },
+                { title: "Allegretto", url: "https://youtu.be/7tuhIsMvXx8?si=ZNS_VNt6l2Gm9hQ0" },
+                { title: "Andantino", url: "https://youtu.be/HMJiQg2eFhE?si=VhpHfmLuz7XOzsBn" },
+                { title: "Etude", url: "https://youtu.be/ypp60VfFQJM?si=pe99S749sgoKHhwP" },
+                { title: "Minuet 1", url: "https://youtu.be/PO69MCdCzU0?si=zSYzODRTeq9MXaCM" },
+                { title: "Minuet 2", url: "https://youtu.be/R5FXMK7pK4s?si=OeT0pExTGQOC1jMd" },
+                { title: "Minuet 3", url: "https://youtu.be/NjhKb2HUGFM?si=IjN7lKp606IGSnaW" },
+                { title: "Happy Farmer", url: "https://youtu.be/YuVluAaGmBM?si=DWgHHIE-7bPNY63N" },
+                { title: "Gossec Gavotte", url: "https://youtu.be/zEtxQo0VVDY?si=--Z_jDJBqsK4eqMu" }
               ], "https://youtu.be/9z9vg56vNgI?si=fXTkHJW8wohD4_ty")
             },
             {
               title: "Suzuki Book 2",
               url: "https://youtu.be/JRUQxAu3ols?si=ecgKdUt7uRb_od0s",
               songs: createSuzukiSongs([
-                "Chorus from Judas Maccabaeus",
-                "Musette",
-                "Hunter's Chorus",
-                "Long, Long Ago",
-                "Waltz",
-                "Bourree",
-                "The Two Grenadiers",
-                "Theme from Witches' Dance",
-                "Gavotte from Mignon",
-                "Gavotte",
-                "Minuet in G"
+                { title: "Chorus from Judas Maccabaeus", url: "https://youtu.be/JRUQxAu3ols?si=2KqWJCRcw3033Hbb" },
+                { title: "Musette", url: "https://youtu.be/RE9h9KVctsQ?si=ICv0i0ofZejzxAJf" },
+                { title: "Hunters' Chorus", url: "https://youtu.be/GVX7Uf78XAE?si=PvBz280TNFK8AxKl" },
+                { title: "Long, Long Ago with Variation", url: "https://youtu.be/IfZnQXy0LFA?si=9BmWiFAC_mWMugQ-" },
+                { title: "Waltz", url: "https://youtu.be/fB46mNJmw2A?si=w_lYK2UIJAHELII1" },
+                { title: "Handel Bourree", url: "https://youtu.be/6z_mXmxtTKA?si=bpNlIMwz708dpHwA" },
+                { title: "The Two Grenadiers", url: "https://youtu.be/tHTj3819-WY?si=fK2S3l66zZ4yBcWo" },
+                { title: "Witches' Dance", url: "https://youtu.be/1M6FRoac4uU?si=cGpg_tGBd3_bpjrW" },
+                { title: "Gavotte from Mignon", url: "https://youtu.be/xM43Uj3M908?si=5ECi2uSzbeq9LBf3" },
+                { title: "Gavotte by Lully", url: "https://youtu.be/A3lE21Ik_m8?si=FEpbHdZCkJVlBeYl" },
+                { title: "Beethoven Minuet in G", url: "https://youtu.be/RCRhqoAvU8M?si=420IjllBolTn9BgX" },
+                { title: "Boccherini Minuet", url: "https://youtu.be/peUydZhuXuM?si=NBRP9hoMjSknDpab" }
               ], "https://youtu.be/JRUQxAu3ols?si=ecgKdUt7uRb_od0s")
             },
             {
               title: "Suzuki Book 3",
               url: "https://youtu.be/vtVJje83Z4Y?si=U4szJOwWk5Tcdlu9",
               songs: createSuzukiSongs([
-                "Gavotte",
-                "Minuet",
-                "Gavotte in G Minor",
-                "Humoresque",
-                "Gavotte",
-                "Gavotte in D Major",
-                "Bourree"
+                { title: "Martini Gavotte", url: "https://youtu.be/vtVJje83Z4Y?si=69ELPo2fPF1rAfXk" },
+                { title: "Minuet by Bach", url: "https://youtu.be/RaP-IzM5pl0?si=GKDdjpcxWdk_VvsA" },
+                { title: "Gavotte in G Minor", url: "https://youtu.be/JHlggqZTXZk?si=dro7hH8_JbZUZgA1" },
+                { title: "Humoresque", url: "https://youtu.be/gqfpDo-sSs8?si=e8hp7ZwuUN34MFt8" },
+                { title: "Gavotte by Becker", url: "https://youtu.be/jxS4RkS8lCA?si=B7dXoAq5oYzbJw8h" },
+                { title: "Gavotte I and II by Bach", url: "https://youtu.be/UdJ7r__BhjY?si=3rxQIWEmA44R2nKS" },
+                { title: "Bourree I and II by Bach", url: "https://youtu.be/pFq8oKcGv6o?si=5_11d6W5JNwzWkth" }
               ], "https://youtu.be/vtVJje83Z4Y?si=U4szJOwWk5Tcdlu9")
             }
           ],
@@ -304,20 +304,24 @@ function createTopic(id, title, customData = {}) {
 }
 
 function createSuzukiSongs(songTitles, bookVideoUrl) {
-  return songTitles.map((title) => ({
-    title,
-    url: bookVideoUrl,
-    // TODO: Add timestamp later, for example timestamp: "1m23s".
-    timestamp: ""
-  }));
+  return songTitles.map((song) => {
+    const songData = typeof song === "string" ? { title: song } : song;
+
+    return {
+      title: songData.title,
+      url: songData.url || bookVideoUrl,
+      timestamp: songData.timestamp || "",
+      todo: songData.todo || "TODO: add the exact song timestamp from the source video chapters."
+    };
+  });
 }
 
-function createViolinTechnique(title, type, description, videoTitle, url, why) {
+function createViolinTechnique(title, type, description, videoTitle, url, why, keyPoints = []) {
   return {
     title,
     type,
     description,
-    notes: "Notes for Sophie/Liam: add practice reminders here.",
+    keyPoints: keyPoints.length > 0 ? keyPoints : getTechniqueKeyPoints(title),
     videos: [
       {
         title: videoTitle,
@@ -326,6 +330,26 @@ function createViolinTechnique(title, type, description, videoTitle, url, why) {
       }
     ]
   };
+}
+
+function getTechniqueKeyPoints(title) {
+  const pointsByTechnique = {
+    "Legato": ["Smooth bow changes", "Even bow speed", "Connected sound"],
+    "DÃ©tachÃ©": ["Separate strokes", "Straight bow path", "Consistent tone"],
+    "Pizzicato": ["Pluck with good tone", "Keep the left hand stable", "Stay relaxed between plucks"],
+    "Staccato": ["Clear stops", "Relaxed bow hand", "Controlled motion"],
+    "MartelÃ©": ["Prepared bow bite", "Quick release", "Relax after each note"],
+    "Trill": ["Light finger taps", "Even rhythm", "Keep the hand loose"],
+    "Vibrato": ["Relaxed wrist or arm", "Steady pulse", "Do not squeeze the neck"],
+    "Shifting": ["Use a guide finger", "Keep the left hand light", "Listen for the arrival pitch"],
+    "Glissando / Portamento": ["Smooth slide", "Controlled speed", "Accurate landing note"],
+    "Double Stops & Chords": ["Balanced fingers", "Clean intonation", "Relaxed hand"],
+    "Harmonics": ["Very light finger touch", "Clear contact point", "Steady bow speed"],
+    "Spiccato": ["Natural bow bounce", "Relaxed wrist", "Start slowly"],
+    "Ricochet / JetÃ©": ["Let the bow rebound naturally", "Keep the wrist flexible", "Control the number of bounces"]
+  };
+
+  return pointsByTechnique[title] || ["Relaxed setup", "Clear sound", "Slow careful practice"];
 }
 
 applyManagedContent(familyData, managedContent);
@@ -385,6 +409,7 @@ const timelineListEl = document.querySelector("#timeline-list");
 
 let activeFamilyId = familyData[0].id;
 let currentPracticeLibrary = null;
+let activeOneByOneBookIndex = null;
 let techniqueFilters = {
   mode: "all",
   search: ""
@@ -597,6 +622,7 @@ function renderPracticeLibrary(topic) {
 
 function renderViolinPracticeLibrary(library) {
   currentPracticeLibrary = library;
+  activeOneByOneBookIndex = null;
   techniqueFilters = {
     mode: "all",
     search: ""
@@ -644,30 +670,50 @@ function renderOneByOneSection(books) {
   return `
     <article class="practice-section-card">
       <h4>One-by-One Play Along</h4>
-      <p class="practice-section-intro">Pick one song to open a focused practice view.</p>
-      <div class="one-by-one-books">
-        ${books
-          .map((book, bookIndex) => {
-            return `
-              <section class="song-book-card">
-                <h5>${book.title}</h5>
-                <div class="song-list">
-                  ${book.songs
-                    .map((song, songIndex) => {
-                      return `
-                        <button class="song-button" type="button" data-song-book-index="${bookIndex}" data-song-index="${songIndex}">
-                          ${song.title}
-                        </button>
-                      `;
-                    })
-                    .join("")}
-                </div>
-              </section>
-            `;
-          })
-          .join("")}
-      </div>
+      <p class="practice-section-intro">Choose a Suzuki book, then pick one song to open a focused practice view.</p>
+      ${renderOneByOneBooks(books)}
     </article>
+  `;
+}
+
+function renderOneByOneBooks(books) {
+  return `
+    <div class="one-by-one-books" id="one-by-one-books">
+      ${books
+        .map((book, bookIndex) => {
+          const isOpen = activeOneByOneBookIndex === bookIndex;
+          return `
+            <section class="song-book-card ${isOpen ? "active" : ""}" data-one-by-one-book-card="${bookIndex}">
+              <button
+                class="song-book-toggle"
+                type="button"
+                data-one-by-one-book-toggle="${bookIndex}"
+                aria-expanded="${isOpen ? "true" : "false"}"
+                aria-controls="song-list-${bookIndex}"
+              >
+                <span>${book.title}</span>
+                <small>${book.songs.length} songs</small>
+              </button>
+              ${
+                isOpen
+                  ? `<div class="song-list" id="song-list-${bookIndex}">
+                      ${book.songs
+                        .map((song, songIndex) => {
+                          return `
+                            <button class="song-button" type="button" data-song-book-index="${bookIndex}" data-song-index="${songIndex}">
+                              ${song.title}
+                            </button>
+                          `;
+                        })
+                        .join("")}
+                    </div>`
+                  : ""
+              }
+            </section>
+          `;
+        })
+        .join("")}
+    </div>
   `;
 }
 
@@ -774,6 +820,27 @@ function updateTechniqueFilters() {
   });
 }
 
+function setActiveOneByOneBook(bookIndex) {
+  if (!currentPracticeLibrary) return;
+
+  activeOneByOneBookIndex = bookIndex;
+  updateOneByOneBooks();
+}
+
+function toggleActiveOneByOneBook(bookIndex) {
+  if (!currentPracticeLibrary) return;
+
+  activeOneByOneBookIndex = activeOneByOneBookIndex === bookIndex ? null : bookIndex;
+  updateOneByOneBooks();
+}
+
+function updateOneByOneBooks() {
+  const list = document.querySelector("#one-by-one-books");
+  if (!list || !currentPracticeLibrary) return;
+
+  list.outerHTML = renderOneByOneBooks(currentPracticeLibrary.oneByOneBooks);
+}
+
 function renderTechniqueButtonCard(technique, levelIndex, techniqueIndex) {
   const level = currentPracticeLibrary.techniqueLevels[levelIndex];
 
@@ -785,12 +852,25 @@ function renderTechniqueButtonCard(technique, levelIndex, techniqueIndex) {
         <span class="practice-type">${level.level}: ${level.title}</span>
       </div>
       <p class="technique-description">${technique.description}</p>
+      ${renderTechniqueKeyPoints(technique.keyPoints)}
       <button class="practice-action-button" type="button" data-technique-level-index="${levelIndex}" data-technique-index="${techniqueIndex}">
         Watch Tutorial
       </button>
-      <p class="technique-notes"><strong>Practice notes:</strong> ${technique.notes}</p>
       <div class="technique-inline-video" data-technique-slot="${levelIndex}-${techniqueIndex}" hidden></div>
     </article>
+  `;
+}
+
+function renderTechniqueKeyPoints(keyPoints = []) {
+  if (!keyPoints.length) return "";
+
+  return `
+    <div class="technique-key-points">
+      <span class="practice-type">Watch for</span>
+      <ul>
+        ${keyPoints.map((point) => `<li>${point}</li>`).join("")}
+      </ul>
+    </div>
   `;
 }
 
@@ -869,7 +949,7 @@ function renderPracticeItem(item) {
       <strong>${item.title}</strong>
       ${item.description ? `<p class="technique-description">${item.description}</p>` : ""}
       ${techniqueVideos}
-      <p class="technique-notes"><strong>Practice notes:</strong> ${item.notes || "Add practice reminders here."}</p>
+      ${item.notes ? `<p class="technique-notes">${item.notes}</p>` : ""}
     </article>
   `;
 }
@@ -904,11 +984,18 @@ function openSongPracticeView(bookIndex, songIndex) {
       label: book.title,
       closeAttribute: "data-back-to-violin-practice",
       closeText: "Back to Violin page",
-      note: "This song currently opens the book-level one-by-one play-along video. TODO: add a timestamp for this exact song later."
+      note: getSongPracticeNote(book, song)
     })}
   `;
   detail.hidden = false;
   detail.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function getSongPracticeNote(book, song) {
+  if (song.timestamp) return `Starts at ${song.timestamp}.`;
+  if (song.url && song.url !== book.url) return "";
+
+  return `Connected to ${book.title} one-by-one video for now. ${song.todo}`;
 }
 
 function showViolinPracticeHome() {
@@ -1052,17 +1139,37 @@ function getYouTubeEmbedUrl(url) {
     return url;
   }
 
+  const startSeconds = getYouTubeStartSeconds(url);
+  const startQuery = startSeconds ? `?start=${startSeconds}` : "";
   const watchMatch = url.match(/[?&]v=([^&]+)/);
   if (watchMatch) {
-    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+    return `https://www.youtube.com/embed/${watchMatch[1]}${startQuery}`;
   }
 
   const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
   if (shortMatch) {
-    return `https://www.youtube.com/embed/${shortMatch[1]}`;
+    return `https://www.youtube.com/embed/${shortMatch[1]}${startQuery}`;
   }
 
   return "";
+}
+
+function getYouTubeStartSeconds(url) {
+  const timeMatch = url.match(/[?&](?:t|start)=([^&]+)/);
+  if (!timeMatch) return 0;
+
+  const timeValue = decodeURIComponent(timeMatch[1]);
+  if (/^\d+$/.test(timeValue)) return Number(timeValue);
+
+  const hours = timeValue.match(/(\d+)h/);
+  const minutes = timeValue.match(/(\d+)m/);
+  const seconds = timeValue.match(/(\d+)s/);
+
+  return (
+    (hours ? Number(hours[1]) * 3600 : 0) +
+    (minutes ? Number(minutes[1]) * 60 : 0) +
+    (seconds ? Number(seconds[1]) : 0)
+  );
 }
 
 function getLastUpdatedText(topicDate) {
@@ -1142,6 +1249,12 @@ practiceLibraryListEl.addEventListener("click", (event) => {
     return;
   }
 
+  const bookToggle = event.target.closest("[data-one-by-one-book-toggle]");
+  if (bookToggle) {
+    toggleActiveOneByOneBook(Number(bookToggle.dataset.oneByOneBookToggle));
+    return;
+  }
+
   const songButton = event.target.closest("[data-song-book-index][data-song-index]");
   if (songButton) {
     openSongPracticeView(Number(songButton.dataset.songBookIndex), Number(songButton.dataset.songIndex));
@@ -1167,6 +1280,16 @@ practiceLibraryListEl.addEventListener("click", (event) => {
   if (backButton) {
     showViolinPracticeHome();
   }
+});
+
+practiceLibraryListEl.addEventListener("mouseover", (event) => {
+  const bookCard = event.target.closest("[data-one-by-one-book-card]");
+  if (!bookCard || !practiceLibraryListEl.contains(bookCard)) return;
+
+  const bookIndex = Number(bookCard.dataset.oneByOneBookCard);
+  if (activeOneByOneBookIndex === bookIndex) return;
+
+  setActiveOneByOneBook(bookIndex);
 });
 
 practiceLibraryListEl.addEventListener("input", (event) => {

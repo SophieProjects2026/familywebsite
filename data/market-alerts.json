@@ -1,0 +1,124 @@
+{
+  "generatedAt": "2026-06-16",
+  "disclaimer": "This dashboard is for education and family discussion only. It does not provide automatic buy or sell instructions.",
+  "actionSignal": {
+    "state": "Hold / Normal Zone",
+    "status": "Yellow",
+    "confidence": "Medium",
+    "message": "Stay with regular plan.",
+    "meaning": "Mixed or normal market conditions.",
+    "supportingIndicators": [
+      "Credit Spreads are normal",
+      "VIX is not in a red complacency zone",
+      "Fear & Greed is neutral"
+    ],
+    "warningIndicators": [
+      "Shiller CAPE is historically expensive",
+      "Buffett Indicator is moderately above average",
+      "Market Breadth is mixed"
+    ],
+    "lastUpdated": "2026-06-16",
+    "notes": "Editable by K/Sophie."
+  },
+  "alerts": [
+    {
+      "id": "vix",
+      "name": "VIX",
+      "value": "16.2",
+      "status": "Yellow",
+      "message": "Volatility is below the elevated-fear zone but not in deep complacency.",
+      "explanation": "The VIX helps the family discuss whether market fear is creating opportunity or whether calm conditions may be encouraging complacency.",
+      "source": "CBOE / FRED source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "fear-greed-index",
+      "name": "Fear & Greed Index",
+      "value": "Neutral",
+      "status": "Yellow",
+      "message": "Sentiment is neutral, so this indicator is not showing extreme fear or extreme greed.",
+      "explanation": "Sentiment extremes can help frame family discussions about whether investors are unusually fearful or unusually confident.",
+      "source": "CNN Fear & Greed source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "buffett-indicator",
+      "name": "Buffett Indicator",
+      "value": "Moderately above average",
+      "status": "Yellow",
+      "message": "Broad market valuation is above normal but not marked as a red-zone extreme in this sample.",
+      "explanation": "This indicator compares total stock market value with GDP and helps the family discuss broad valuation risk.",
+      "source": "Federal Reserve / GDP source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "shiller-cape",
+      "name": "Shiller CAPE",
+      "value": "Historically expensive",
+      "status": "Red",
+      "message": "Long-term valuation appears expensive in this sample alert set.",
+      "explanation": "CAPE smooths earnings over a long period and helps frame long-term valuation discussions.",
+      "source": "Robert Shiller Data source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "sp500-pe",
+      "name": "S&P 500 P/E",
+      "value": "Near average",
+      "status": "Yellow",
+      "message": "Forward valuation is near or moderately above average in this sample.",
+      "explanation": "The P/E ratio helps compare stock prices with expected earnings and gives a simple valuation reference point.",
+      "source": "FactSet / S&P valuation source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "yield-curve",
+      "name": "Yield Curve",
+      "value": "Flat",
+      "status": "Yellow",
+      "message": "The yield curve is flat, which deserves attention but is not marked as inverted in this sample.",
+      "explanation": "The yield curve is watched because a flat or inverted curve can signal economic slowdown risk.",
+      "source": "U.S. Treasury / FRED source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "ten-year-treasury-yield",
+      "name": "10-Year Treasury Yield",
+      "value": "4.47%",
+      "status": "Yellow",
+      "message": "The benchmark yield is elevated in this sample, so it may affect valuation and bond discussions.",
+      "explanation": "The 10-year Treasury yield affects discount rates, stock valuations, mortgage rates, and bond attractiveness.",
+      "source": "U.S. Treasury / FRED source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "credit-spreads",
+      "name": "Credit Spreads",
+      "value": "Normal",
+      "status": "Green",
+      "message": "Credit spreads are normal in this sample, suggesting limited visible credit stress.",
+      "explanation": "Credit spreads help the family discuss whether bond markets are signaling financial stress.",
+      "source": "FRED source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    },
+    {
+      "id": "market-breadth",
+      "name": "Market Breadth",
+      "value": "Mixed participation",
+      "status": "Yellow",
+      "message": "Market participation is mixed, so leadership may not be fully broad-based.",
+      "explanation": "Broad rallies are generally healthier than rallies led by only a small number of stocks.",
+      "source": "NYSE / S&P breadth source link placeholder",
+      "lastUpdated": "2026-06-16",
+      "notes": "Editable by K/Sophie."
+    }
+  ]
+}

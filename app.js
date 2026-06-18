@@ -193,6 +193,16 @@ const familyData = [
       createTopic("news", "News"),
       createTopic("retirement", "Retirement"),
       createTopic("investing", "Investing"),
+      createTopic("market-signal-dashboard", "Market Signal Dashboard", {
+        description: "A family reference page for reading long-term market conditions with calm, educational signals.",
+        marketSignalDashboard: true,
+        videos: [],
+        rednotePosts: [],
+        pdfs: [],
+        photos: [],
+        links: [],
+        notes: []
+      }),
       createTopic("financial-planning", "Financial Planning"),
       createTopic("favorite-articles", "Favorite Articles"),
       createTopic("family-financial-dashboard", "Family Financial Dashboard")
@@ -402,18 +412,24 @@ const pdfListEl = document.querySelector("#pdf-list");
 const photoListEl = document.querySelector("#photo-list");
 const linkListEl = document.querySelector("#link-list");
 const notesListEl = document.querySelector("#notes-list");
+const marketDashboardSectionEl = document.querySelector("#market-dashboard-section");
+const marketDashboardContentEl = document.querySelector("#market-dashboard-content");
 const practiceLibrarySectionEl = document.querySelector("#practice-library-section");
 const practiceLibraryListEl = document.querySelector("#practice-library-list");
 const timelineSectionEl = document.querySelector("#timeline-section");
 const timelineListEl = document.querySelector("#timeline-list");
 
 let activeFamilyId = familyData[0].id;
+let activeTopicId = "";
 let currentPracticeLibrary = null;
 let activeOneByOneBookIndex = null;
 let techniqueFilters = {
   mode: "all",
   search: ""
 };
+let liveMarketSignals = null;
+let latestMarketAlerts = null;
+let dashboardMarketAlerts = null;
 
 function renderTabs() {
   tabsEl.innerHTML = familyData
@@ -476,6 +492,7 @@ function openTopic(topicId) {
 
   if (!topic) return;
 
+  activeTopicId = topicId;
   detailOwnerEl.textContent = family.tabName;
   topicDetailHeroEl.style.backgroundImage = backgroundWithImages(
     "linear-gradient(180deg, rgba(47, 38, 28, 0.04), rgba(47, 38, 28, 0.42))",
@@ -497,11 +514,793 @@ function openTopic(topicId) {
   setResourceSectionVisibility(pdfListEl, topic.pdfs);
   setResourceSectionVisibility(photoListEl, topic.photos);
   setResourceSectionVisibility(linkListEl, topic.links);
+  setResourceSectionVisibility(notesListEl, topic.notes);
+  renderMarketSignalDashboard(topic);
   renderPracticeLibrary(topic);
   renderTimeline(topic.timeline);
 
   detailEl.hidden = false;
   detailEl.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+const marketSignalIndicators = [
+  {
+    name: "VIX",
+    currentStatus: "Manual update",
+    meaning: "Market fear and expected volatility.",
+    why: "High fear often creates opportunities. Low fear can signal complacency.",
+    green: "VIX > 30",
+    yellow: "VIX 20-30",
+    red: "VIX < 15",
+    notes: "Editable by K/Sophie.",
+    source: "CBOE"
+  },
+  {
+    name: "Fear & Greed Index",
+    currentStatus: "Manual update",
+    meaning: "Measures overall investor sentiment.",
+    why: "Extreme fear can create opportunities. Extreme greed can increase risk.",
+    green: "Extreme Fear",
+    yellow: "Neutral",
+    red: "Extreme Greed",
+    notes: "Editable by K/Sophie.",
+    source: "CNN Fear & Greed"
+  },
+  {
+    name: "Buffett Indicator",
+    currentStatus: "Manual update",
+    meaning: "Total stock market value relative to GDP.",
+    why: "Helps identify broad market overvaluation.",
+    green: "Below historical average",
+    yellow: "Moderately above average",
+    red: "Significantly above historical average",
+    notes: "Editable by K/Sophie.",
+    source: "Federal Reserve / GDP data"
+  },
+  {
+    name: "Shiller CAPE Ratio",
+    currentStatus: "Manual update",
+    meaning: "Inflation-adjusted valuation measure.",
+    why: "Long-term valuation indicator.",
+    green: "Historically cheap",
+    yellow: "Fairly valued",
+    red: "Historically expensive",
+    notes: "Editable by K/Sophie.",
+    source: "Robert Shiller Data"
+  },
+  {
+    name: "S&P 500 Forward P/E",
+    currentStatus: "Manual update",
+    meaning: "Market valuation based on expected earnings.",
+    why: "Shows whether stocks are expensive relative to earnings.",
+    green: "Below long-term average",
+    yellow: "Near average",
+    red: "Well above average",
+    notes: "Editable by K/Sophie.",
+    source: "FactSet"
+  },
+  {
+    name: "Yield Curve",
+    currentStatus: "Manual update",
+    meaning: "Difference between long-term and short-term Treasury yields.",
+    why: "Recession warning indicator.",
+    green: "Normal positive slope",
+    yellow: "Flat",
+    red: "Inverted",
+    notes: "Editable by K/Sophie.",
+    source: "U.S. Treasury"
+  },
+  {
+    name: "10-Year Treasury Yield",
+    currentStatus: "Manual update",
+    meaning: "Benchmark interest rate.",
+    why: "Affects stock valuations and bond attractiveness.",
+    green: "Supportive for valuations",
+    yellow: "Neutral",
+    red: "Rapidly rising / restrictive",
+    notes: "Editable by K/Sophie.",
+    source: "U.S. Treasury"
+  },
+  {
+    name: "Credit Spreads",
+    currentStatus: "Manual update",
+    meaning: "Difference between corporate and Treasury yields.",
+    why: "Measures stress in financial markets.",
+    green: "Narrow spreads",
+    yellow: "Moderately widening",
+    red: "Sharp widening",
+    notes: "Editable by K/Sophie.",
+    source: "FRED"
+  },
+  {
+    name: "Unemployment Rate Trend",
+    currentStatus: "Manual update",
+    meaning: "Labor market strength.",
+    why: "Early recession indicator.",
+    green: "Stable",
+    yellow: "Slight increase",
+    red: "Rapid increase",
+    notes: "Editable by K/Sophie.",
+    source: "BLS"
+  },
+  {
+    name: "ISM Manufacturing PMI",
+    currentStatus: "Manual update",
+    meaning: "Economic activity indicator.",
+    why: "Helps identify economic expansion or contraction.",
+    green: "Above 50",
+    yellow: "Near 50",
+    red: "Below 50",
+    notes: "Editable by K/Sophie.",
+    source: "ISM"
+  },
+  {
+    name: "Market Breadth",
+    currentStatus: "Manual update",
+    meaning: "How many stocks participate in market gains.",
+    why: "Healthy rallies require broad participation.",
+    green: "Broad participation",
+    yellow: "Mixed participation",
+    red: "Narrow participation",
+    notes: "Editable by K/Sophie.",
+    source: "NYSE / S&P Breadth Data"
+  },
+  {
+    name: "Cash Allocation Signal",
+    currentStatus: "Manual update",
+    meaning: "Internal family guideline.",
+    why: "Helps manage dry powder during opportunities.",
+    green: "Multiple indicators attractive",
+    yellow: "Mixed signals",
+    red: "Most indicators expensive",
+    notes: "Editable by K/Sophie.",
+    source: "Family note placeholder"
+  }
+];
+
+const marketAlertThresholdRules = {
+  vix: {
+    green: "VIX above 30 = fear / possible opportunity",
+    yellow: "VIX 20-30 = elevated volatility",
+    red: "VIX below 15 = complacency"
+  },
+  "fear-greed-index": {
+    green: "Extreme Fear",
+    yellow: "Neutral",
+    red: "Extreme Greed"
+  },
+  "buffett-indicator": {
+    green: "Below historical average",
+    yellow: "Moderately above average",
+    red: "Significantly above historical average"
+  },
+  "shiller-cape": {
+    green: "Historically cheap",
+    yellow: "Fair / elevated",
+    red: "Historically expensive"
+  },
+  "sp500-pe": {
+    green: "Below long-term average",
+    yellow: "Near or moderately above average",
+    red: "Well above average"
+  },
+  "yield-curve": {
+    green: "Normal positive curve",
+    yellow: "Flat curve",
+    red: "Inverted curve"
+  },
+  "ten-year-treasury-yield": {
+    green: "Stable or falling",
+    yellow: "Elevated",
+    red: "Rapidly rising / restrictive"
+  },
+  "credit-spreads": {
+    green: "Normal",
+    yellow: "Widening",
+    red: "Sharply widening"
+  },
+  "market-breadth": {
+    green: "Broad participation",
+    yellow: "Mixed participation",
+    red: "Narrow participation"
+  }
+};
+
+const actionSignalStates = {
+  strongBuy: {
+    state: "Strong Buy Zone",
+    status: "Green",
+    meaning: "Market fear/stress is high and valuations are more attractive.",
+    message: "Review staged buying plan."
+  },
+  accumulate: {
+    state: "Buy / Accumulate Zone",
+    status: "Green",
+    meaning: "Some opportunity signals are positive.",
+    message: "Consider gradual deployment."
+  },
+  hold: {
+    state: "Hold / Normal Zone",
+    status: "Yellow",
+    meaning: "Mixed or normal market conditions.",
+    message: "Stay with regular plan."
+  },
+  caution: {
+    state: "Caution / Reduce Risk Zone",
+    status: "Red",
+    meaning: "Valuations are stretched and fear is low.",
+    message: "Review risk exposure."
+  },
+  defensive: {
+    state: "Defensive / Raise Cash Zone",
+    status: "Red",
+    meaning: "Multiple overheating or inflation/stress signals are red.",
+    message: "Consider defensive positioning."
+  }
+};
+
+const actionSignalLayers = {
+  valuation: ["buffett-indicator", "shiller-cape", "sp500-pe", "market-breadth", "equity-risk-premium"],
+  stress: [
+    "vix",
+    "fear-greed-index",
+    "naaim-exposure",
+    "put-call-ratio",
+    "yield-curve",
+    "credit-spreads",
+    "gold-oil-ratio",
+    "gold-silver-ratio",
+    "commodity-inflation-radar",
+    "dxy"
+  ]
+};
+
+function renderMarketSignalDashboard(topic) {
+  if (!topic.marketSignalDashboard) {
+    marketDashboardSectionEl.hidden = true;
+    marketDashboardContentEl.innerHTML = "";
+    return;
+  }
+
+  const alertIndicators = getDashboardAlertIndicators();
+  const alertSummary = getDashboardAlertSummary(alertIndicators);
+  const indicators = alertIndicators.length ? alertIndicators : getMarketSignalIndicators();
+  const generatedAt = alertSummary.lastUpdated || (
+    liveMarketSignals && liveMarketSignals.generatedAt
+      ? formatMarketDate(liveMarketSignals.generatedAt)
+      : "Sample values"
+  );
+  const dashboardDisclaimer = liveMarketSignals?.educationalDisclaimer
+    || "This dashboard is for education and family discussion only. It does not provide automatic buy or sell instructions.";
+
+  marketDashboardSectionEl.hidden = false;
+  marketDashboardContentEl.innerHTML = `
+    <div class="market-dashboard">
+      ${renderCurrentMarketAlerts(alertSummary)}
+      ${renderActionSignal(getActionSignal(alertIndicators, alertSummary))}
+      ${renderSignalGroupDashboard(indicators)}
+      <div class="market-summary-panel" aria-label="Compact market signal dashboard">
+        <div class="market-summary-copy">
+          <p class="eyebrow">Compact signal board</p>
+          <h4>Latest market signal dashboard</h4>
+          <p>Latest dashboard update: ${generatedAt}. Signals are for education and family discussion only, not automatic financial advice.</p>
+        </div>
+        <div class="market-table-wrap">
+          <table class="market-signal-table">
+            <thead>
+              <tr>
+                <th scope="col">Indicator</th>
+                <th scope="col">Latest Value</th>
+                <th scope="col">Status</th>
+                <th scope="col">Data</th>
+                <th scope="col">Date Updated</th>
+                <th scope="col">Green</th>
+                <th scope="col">Yellow</th>
+                <th scope="col">Red</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${indicators.map(renderMarketSignalRow).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="market-indicator-library" aria-label="Detailed indicator library">
+        ${indicators.map(renderMarketIndicatorCard).join("")}
+      </div>
+      <aside class="market-disclaimer">
+        <strong>Important disclaimer</strong>
+        <p>${dashboardDisclaimer}</p>
+      </aside>
+    </div>
+  `;
+}
+
+function renderMarketSignalRow(indicator) {
+  return `
+    <tr>
+      <th scope="row">${indicator.name}</th>
+      <td>${renderMarketValue(indicator)}</td>
+      <td>${renderStatusPill(indicator.status || indicator.currentStatus)}</td>
+      <td>${renderDataStatus(indicator)}</td>
+      <td>${indicator.lastUpdated || indicator.dateUpdated || "Manual"}</td>
+      <td><span class="signal-pill signal-green">${getThreshold(indicator, "green")}</span></td>
+      <td><span class="signal-pill signal-yellow">${getThreshold(indicator, "yellow")}</span></td>
+      <td><span class="signal-pill signal-red">${getThreshold(indicator, "red")}</span></td>
+    </tr>
+  `;
+}
+
+function renderMarketIndicatorCard(indicator, index) {
+  const updated = indicator.lastUpdated || indicator.dateUpdated || "Manual update";
+  const alertMessage = indicator.message || indicator.currentStatus || "Sample alert status";
+  const whyItMatters = indicator.explanation || indicator.whyWeWatchIt || indicator.why;
+
+  return `
+    <details class="market-indicator-card" ${index < 2 ? "open" : ""}>
+      <summary>
+        <span>
+          <strong>${indicator.name}</strong>
+          <small>${renderMarketValue(indicator)} - ${updated}</small>
+        </span>
+        ${renderStatusPill(indicator.status || indicator.currentStatus)}
+      </summary>
+      <div class="indicator-detail-grid">
+        ${renderIndicatorField("Latest Value", renderMarketValue(indicator))}
+        ${renderIndicatorField("Data Status", indicator.fetchStatus || (indicator.isManual ? "manual" : "sample"))}
+        ${renderIndicatorField("Alert Message", alertMessage)}
+        ${renderIndicatorField("Why It Matters", whyItMatters)}
+        ${renderIndicatorField("Green Signal", getThreshold(indicator, "green"), "signal-green")}
+        ${renderIndicatorField("Yellow Signal", getThreshold(indicator, "yellow"), "signal-yellow")}
+        ${renderIndicatorField("Red Signal", getThreshold(indicator, "red"), "signal-red")}
+        ${renderIndicatorNotes(indicator.notes)}
+        ${renderSourceField(indicator)}
+      </div>
+    </details>
+  `;
+}
+
+function renderIndicatorField(label, value, signalClass = "") {
+  return `
+    <div class="indicator-field ${signalClass}">
+      <span>${label}</span>
+      <p>${value}</p>
+    </div>
+  `;
+}
+
+function renderIndicatorNotes(value) {
+  return `
+    <label class="indicator-field indicator-notes">
+      <span>Notes</span>
+      <textarea rows="3">${value}</textarea>
+    </label>
+  `;
+}
+
+function getDashboardAlertIndicators() {
+  if (liveMarketSignals && Array.isArray(liveMarketSignals.indicators)) {
+    return liveMarketSignals.indicators.map((indicator) => ({
+      ...indicator,
+      value: indicator.currentValue || indicator.latestValue,
+      latestValue: indicator.currentValue || indicator.latestValue,
+      lastUpdated: indicator.lastUpdated || indicator.dateUpdated,
+      sourceName: indicator.source || indicator.sourceName,
+      sourceLink: indicator.sourceUrl || indicator.sourceLink,
+      message: indicator.alertMessage || indicator.message,
+      explanation: indicator.whyWeWatchIt || indicator.explanation
+    }));
+  }
+
+  if (!dashboardMarketAlerts || !Array.isArray(dashboardMarketAlerts.alerts)) return [];
+
+  return dashboardMarketAlerts.alerts.map((alert) => ({
+    ...alert,
+    latestValue: alert.value,
+    thresholds: marketAlertThresholdRules[alert.id] || {},
+    sourceName: alert.source,
+    sourceLink: ""
+  }));
+}
+
+function getDashboardAlertSummary(alerts) {
+  const counts = alerts.reduce(
+    (summary, alert) => {
+      const status = (alert.status || "Yellow").toLowerCase();
+
+      if (status === "green") summary.green += 1;
+      else if (status === "red") summary.red += 1;
+      else if (status === "yellow") summary.yellow += 1;
+
+      return summary;
+    },
+    { green: 0, yellow: 0, red: 0 }
+  );
+  const overall = counts.red > 0 ? "Red" : counts.yellow > 0 ? "Yellow" : "Green";
+  const lastUpdated = getLatestAlertDate(alerts) || dashboardMarketAlerts?.generatedAt || "";
+  const summaryMessage = getAlertSummaryMessage(overall, counts);
+
+  return {
+    overall,
+    lastUpdated,
+    message: summaryMessage,
+    counts
+  };
+}
+
+function getLatestAlertDate(alerts) {
+  const dates = alerts
+    .map((alert) => alert.lastUpdated)
+    .filter(Boolean)
+    .sort();
+
+  return dates.length ? dates[dates.length - 1] : "";
+}
+
+function getAlertSummaryMessage(overall, counts) {
+  if (overall === "Red") {
+    return `${counts.red} red indicator${counts.red === 1 ? "" : "s"} need extra caution in today's family discussion.`;
+  }
+
+  if (overall === "Yellow") {
+    return "Most signals are mixed or neutral, so this is a watch-and-learn environment.";
+  }
+
+  return "All sample indicators are green, suggesting a more favorable discussion backdrop.";
+}
+
+function renderCurrentMarketAlerts(summary) {
+  return `
+    <section class="current-market-alerts ${getStatusClass(summary.overall)}" aria-label="Current Market Alerts">
+      <div class="current-alert-heading">
+        <div>
+          <p class="eyebrow">Current Market Alerts</p>
+          <h4>${summary.overall} alert level</h4>
+        </div>
+        ${renderStatusPill(summary.overall)}
+      </div>
+      <p>${summary.message}</p>
+      <dl class="alert-count-grid">
+        <div>
+          <dt>Last updated</dt>
+          <dd>${summary.lastUpdated || "Sample values"}</dd>
+        </div>
+        <div>
+          <dt>Green</dt>
+          <dd>${summary.counts.green}</dd>
+        </div>
+        <div>
+          <dt>Yellow</dt>
+          <dd>${summary.counts.yellow}</dd>
+        </div>
+        <div>
+          <dt>Red</dt>
+          <dd>${summary.counts.red}</dd>
+        </div>
+      </dl>
+    </section>
+  `;
+}
+
+function getActionSignal(alerts, alertSummary) {
+  if (liveMarketSignals && liveMarketSignals.actionSignal) {
+    return normalizeActionSignal(liveMarketSignals.actionSignal, alerts, alertSummary);
+  }
+
+  if (dashboardMarketAlerts && dashboardMarketAlerts.actionSignal) {
+    return normalizeActionSignal(dashboardMarketAlerts.actionSignal, alerts, alertSummary);
+  }
+
+  const valuationAlerts = alerts.filter((alert) => actionSignalLayers.valuation.includes(alert.id));
+  const stressAlerts = alerts.filter((alert) => actionSignalLayers.stress.includes(alert.id));
+  const valuationRed = countStatus(valuationAlerts, "Red");
+  const valuationGreen = countStatus(valuationAlerts, "Green");
+  const stressRed = countStatus(stressAlerts, "Red");
+  const stressGreen = countStatus(stressAlerts, "Green");
+  const complacencyRed = alerts.some((alert) => ["vix", "fear-greed-index"].includes(alert.id) && alert.status === "Red");
+  let definition = actionSignalStates.hold;
+
+  if (stressRed >= 3) {
+    definition = actionSignalStates.defensive;
+  } else if (valuationRed >= 2 && complacencyRed) {
+    definition = actionSignalStates.caution;
+  } else if (valuationGreen >= 2 && stressGreen >= 3) {
+    definition = actionSignalStates.strongBuy;
+  } else if (stressGreen >= 2 && valuationRed === 0) {
+    definition = actionSignalStates.accumulate;
+  }
+
+  return normalizeActionSignal(
+    {
+      ...definition,
+      confidence: getActionConfidence(alerts),
+      supportingIndicators: getActionIndicatorNames(alerts, "Green"),
+      warningIndicators: getActionIndicatorNames(alerts, "Red"),
+      lastUpdated: alertSummary.lastUpdated,
+      notes: "Editable by K/Sophie."
+    },
+    alerts,
+    alertSummary
+  );
+}
+
+function normalizeActionSignal(signal, alerts, alertSummary) {
+  return {
+    state: signal.state || actionSignalStates.hold.state,
+    status: signal.status || "Yellow",
+    confidence: signal.confidence || getActionConfidence(alerts),
+    message: signal.message || actionSignalStates.hold.message,
+    meaning: signal.meaning || actionSignalStates.hold.meaning,
+    supportingIndicators: signal.supportingIndicators || getActionIndicatorNames(alerts, "Green"),
+    warningIndicators: signal.warningIndicators || getActionIndicatorNames(alerts, "Red"),
+    lastUpdated: signal.lastUpdated || alertSummary.lastUpdated || "Sample values",
+    notes: signal.notes || "Editable by K/Sophie."
+  };
+}
+
+function renderActionSignal(signal) {
+  return `
+    <section class="action-signal-panel ${getStatusClass(signal.status)}" aria-label="Action Signal">
+      <div class="action-signal-heading">
+        <div>
+          <p class="eyebrow">Action Signal</p>
+          <h4>${signal.state}</h4>
+        </div>
+        ${renderStatusPill(signal.status)}
+      </div>
+      <p class="action-signal-message">${signal.message}</p>
+      <div class="action-signal-grid">
+        <div>
+          <span>Meaning</span>
+          <p>${signal.meaning}</p>
+        </div>
+        <div>
+          <span>Confidence</span>
+          <p>${signal.confidence}</p>
+        </div>
+        <div>
+          <span>Last Updated</span>
+          <p>${signal.lastUpdated}</p>
+        </div>
+      </div>
+      <div class="action-signal-lists">
+        ${renderActionSignalList("Supporting Indicators", signal.supportingIndicators)}
+        ${renderActionSignalList("Warning Indicators", signal.warningIndicators)}
+      </div>
+      <label class="indicator-field indicator-notes action-signal-notes">
+        <span>Notes for K/Sophie</span>
+        <textarea rows="3">${signal.notes}</textarea>
+      </label>
+      <p class="action-signal-disclaimer">This dashboard supports family investment discussion. It does not replace personal judgment or professional financial advice.</p>
+    </section>
+  `;
+}
+
+function renderActionSignalList(title, items) {
+  const listItems = items && items.length ? items : ["No sample indicators in this group yet."];
+
+  return `
+    <div class="action-signal-list">
+      <span>${title}</span>
+      <ul>
+        ${listItems.map((item) => `<li>${item}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+}
+
+function renderSignalGroupDashboard(indicators) {
+  const valuation = indicators.filter((indicator) => indicator.group === "valuation");
+  const radar = indicators.filter((indicator) => indicator.group === "opportunityRadar");
+
+  return `
+    <div class="signal-group-dashboard" aria-label="Phase 1 signal groups">
+      ${renderSignalGroupPanel("Valuation Dashboard", valuation, "Phase 1 keeps valuation indicators manual until reliable sources are approved.")}
+      ${renderSignalGroupPanel("Sophie Opportunity Radar", radar, "Live Phase 1 stress, rates, currency, and commodity-ratio indicators.")}
+    </div>
+  `;
+}
+
+function renderSignalGroupPanel(title, indicators, emptyText) {
+  return `
+    <section class="signal-group-panel">
+      <div class="signal-group-heading">
+        <h4>${title}</h4>
+        <span>${indicators.length} signals</span>
+      </div>
+      ${
+        indicators.length
+          ? `<div class="signal-chip-list">${indicators.map(renderSignalChip).join("")}</div>`
+          : `<p>${emptyText}</p>`
+      }
+    </section>
+  `;
+}
+
+function renderSignalChip(indicator) {
+  return `
+    <article class="signal-chip ${getStatusClass(indicator.status)}">
+      <strong>${indicator.name}</strong>
+      <span>${renderMarketValue(indicator)}</span>
+      ${renderStatusPill(indicator.status || "Manual")}
+    </article>
+  `;
+}
+
+function countStatus(alerts, status) {
+  return alerts.filter((alert) => alert.status === status).length;
+}
+
+function getActionIndicatorNames(alerts, status) {
+  return alerts
+    .filter((alert) => alert.status === status)
+    .map((alert) => `${alert.name}: ${alert.message}`);
+}
+
+function getActionConfidence(alerts) {
+  const activeLayerCount = new Set(alerts.map((alert) => {
+    if (actionSignalLayers.valuation.includes(alert.id)) return "valuation";
+    if (actionSignalLayers.stress.includes(alert.id)) return "stress";
+    return "other";
+  })).size;
+
+  if (alerts.length >= 12 && activeLayerCount >= 2) return "High";
+  if (alerts.length >= 8 && activeLayerCount >= 2) return "Medium";
+  return "Low";
+}
+
+function getMarketSignalIndicators() {
+  if (liveMarketSignals && Array.isArray(liveMarketSignals.indicators) && liveMarketSignals.indicators.length > 0) {
+    return liveMarketSignals.indicators;
+  }
+
+  return marketSignalIndicators.map((indicator) => ({
+    ...indicator,
+    latestValue: indicator.currentStatus,
+    dateUpdated: "Manual",
+    status: "Manual",
+    whatItMeans: indicator.meaning,
+    whyWeWatchIt: indicator.why,
+    thresholds: {
+      green: indicator.green,
+      yellow: indicator.yellow,
+      red: indicator.red
+    },
+    sourceName: indicator.source,
+    sourceLink: ""
+  }));
+}
+
+function getLatestMarketAlerts() {
+  if (latestMarketAlerts && Array.isArray(latestMarketAlerts.alerts)) {
+    return latestMarketAlerts.alerts;
+  }
+
+  return [];
+}
+
+function renderMarketAlerts(alerts) {
+  if (!alerts.length) {
+    return `
+      <aside class="market-alert-panel market-alert-panel-quiet">
+        <strong>No active threshold alerts</strong>
+        <p>The latest signal file did not report any green opportunity or red caution alerts.</p>
+      </aside>
+    `;
+  }
+
+  return `
+    <aside class="market-alert-panel">
+      <strong>Latest alert summary</strong>
+      <div class="market-alert-list">
+        ${alerts
+          .map(
+            (alert) => `
+              <article class="market-alert-card ${getStatusClass(alert.status)}">
+                <span>${alert.status}</span>
+                <h5>${alert.indicator}</h5>
+                <p>${alert.summary}</p>
+                <small>${alert.dateUpdated || "Latest update"} · ${alert.reminder}</small>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </aside>
+  `;
+}
+
+function renderMarketValue(indicator) {
+  const value = indicator.latestValue || indicator.currentStatus || "Manual update";
+  if (value === "Data unavailable" || value === "Manual update needed" || value === "Phase 1 manual") {
+    return value;
+  }
+
+  const label = indicator.valueLabel ? ` ${indicator.valueLabel}` : "";
+  return `${value}${label}`;
+}
+
+function renderStatusPill(status = "Manual") {
+  return `<span class="status-pill ${getStatusClass(status)}">${status}</span>`;
+}
+
+function renderDataStatus(indicator) {
+  const status = indicator.fetchStatus || (indicator.isManual ? "manual" : "sample");
+  const label = status === "live" ? "Live" : status === "error" ? "Data unavailable" : "Manual";
+  const className = status === "live" ? "status-green" : status === "error" ? "status-red" : "status-manual";
+
+  return `<span class="status-pill ${className}">${label}</span>`;
+}
+
+function getThreshold(indicator, key) {
+  return (indicator.thresholds && indicator.thresholds[key]) || indicator[key] || "Manual threshold";
+}
+
+function renderSourceField(indicator) {
+  const sourceName = indicator.sourceName || indicator.source || "Source placeholder";
+  const sourceLink = indicator.sourceLink || "";
+
+  return `
+    <div class="indicator-field">
+      <span>Source Link Placeholder</span>
+      <p>
+        ${
+          sourceLink
+            ? `<a href="${sourceLink}" target="_blank" rel="noopener noreferrer">${sourceName}</a>`
+            : sourceName
+        }
+      </p>
+    </div>
+  `;
+}
+
+function getStatusClass(status = "") {
+  const normalized = status.toLowerCase();
+
+  if (normalized === "green") return "status-green";
+  if (normalized === "yellow") return "status-yellow";
+  if (normalized === "red") return "status-red";
+  return "status-manual";
+}
+
+function formatMarketDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) return value;
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+}
+
+async function loadMarketSignalData() {
+  const [signals, dashboardAlerts] = await Promise.all([
+    fetchJson("data/market-signals.json"),
+    fetchJson("data/market-alerts.json")
+  ]);
+
+  liveMarketSignals = signals;
+  latestMarketAlerts = null;
+  dashboardMarketAlerts = dashboardAlerts;
+
+  const activeTopic = getActiveFamily().topics.find((topic) => topic.id === activeTopicId);
+  if (activeTopic && activeTopic.marketSignalDashboard && !detailEl.hidden) {
+    renderMarketSignalDashboard(activeTopic);
+  }
+}
+
+async function fetchJson(url) {
+  try {
+    const response = await fetch(url, { cache: "no-store" });
+
+    if (!response.ok) return null;
+
+    return response.json();
+  } catch {
+    return null;
+  }
 }
 
 function renderVideoCards(videos) {
@@ -1095,6 +1894,7 @@ function hasTopicContent(topic) {
     hasRealNotes(topic.notes) ||
     Boolean(topic.violinPracticeLibrary) ||
     Boolean(topic.practiceSections && topic.practiceSections.length > 0) ||
+    Boolean(topic.marketSignalDashboard) ||
     Boolean(topic.timeline && topic.timeline.length > 0)
   );
 }
@@ -1222,6 +2022,7 @@ tabsEl.addEventListener("click", (event) => {
   if (!tabButton) return;
 
   activeFamilyId = tabButton.dataset.familyId;
+  activeTopicId = "";
   detailEl.hidden = true;
   renderTabs();
   renderTopics();
@@ -1300,12 +2101,14 @@ practiceLibraryListEl.addEventListener("input", (event) => {
 });
 
 backButtonEl.addEventListener("click", () => {
+  activeTopicId = "";
   detailEl.hidden = true;
   document.querySelector(".family-panel").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 renderTabs();
 renderTopics();
+loadMarketSignalData();
 homeHeroPhotoEl.style.backgroundImage = backgroundWithImages(
   "linear-gradient(180deg, rgba(38, 31, 22, 0.08) 0%, rgba(38, 31, 22, 0.2) 42%, rgba(38, 31, 22, 0.72) 100%)",
   homeImages.hero,

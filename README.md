@@ -55,6 +55,128 @@ Simple steps:
 
 For the easiest experience, use Chrome or Microsoft Edge because they support direct local file saving. Other browsers may download the JSON file instead.
 
+## Live Market Signal Alert System
+
+K's Knowledge Center includes a Market Signal Dashboard that can read generated JSON files from GitHub Pages:
+
+- `data/market-signals.json` stores the latest Phase 1 indicator values, status, threshold rules, source links, action signal, fetch status, logged errors, and K/Sophie notes.
+- `scripts/update-market-signals.js` updates `data/market-signals.json`.
+- `.github/workflows/update-market-signals.yml` runs the updater every day at 11:30 UTC and can also be run manually from the GitHub Actions tab.
+
+The updater uses the official FRED API when a `FRED_API_KEY` GitHub Secret is available. If that secret is not configured, it falls back to FRED's public CSV feed for local testing.
+
+Phase 1 intentionally does not automate CNN Fear & Greed, Shiller CAPE, Buffett Indicator, S&P 500 Forward P/E, ISM PMI, or NAAIM Exposure.
+
+### Future live data source policy
+
+When live market data is connected or expanded, prioritize accuracy and reliability over speed. Do not scrape unreliable websites, and do not guess missing values.
+
+Use this source priority:
+
+1. Federal Reserve Economic Data (FRED) whenever possible for yield curve, 10-year Treasury yield, credit spreads, unemployment rate, economic indicators, and recession indicators.
+2. U.S. Treasury for Treasury yields and yield curve data.
+3. CBOE for VIX.
+4. Robert Shiller Data for Shiller CAPE.
+5. Federal Reserve, World Bank, and BEA for Buffett Indicator inputs, GDP data, and total market capitalization comparisons.
+6. FactSet for S&P 500 Forward P/E if publicly accessible. If it is not publicly accessible, use manual updates.
+7. CNN Fear & Greed Index for Fear & Greed sentiment.
+
+Important rules:
+
+- Prefer official APIs whenever available.
+- Store a source URL with every indicator.
+- Display the last update date for every indicator.
+- If data cannot be retrieved reliably, show `Data unavailable` rather than guessing.
+- If multiple sources disagree, prefer official sources, log the discrepancy, and do not silently substitute values.
+- Do not store private account information, portfolio balances, login credentials, or API keys in public files.
+
+Every dashboard indicator should display:
+
+- Indicator Name
+- Current Value
+- Last Updated Date
+- Source
+- Green / Yellow / Red Status
+- Why We Watch It
+- Current Alert Message
+
+The data model should stay easy to extend without changing the dashboard layout. Future indicators may include Gold/Silver Ratio, Gold/Oil Ratio, NAAIM Exposure Index, Put/Call Ratio, Margin Debt, Commodity Index, Copper/Gold Ratio, and Dollar Index (DXY).
+
+The Phase 1 updater currently fetches FRED-hosted data for:
+
+- VIX: `VIXCLS`
+- 10-Year Treasury Yield: `DGS10`
+- Yield Curve: `T10Y2Y`
+- Credit Spreads: `BAA10Y`
+- Unemployment Rate: `UNRATE`
+- Dollar Index proxy: `DTWEXBGS`
+- Gold/Oil Ratio: tries FRED-compatible gold and WTI oil inputs; if a reliable FRED-compatible gold source is unavailable, the ratio is marked `Data unavailable`.
+- Gold/Silver Ratio: tries FRED-compatible gold and silver inputs; if a reliable FRED-compatible source is unavailable, the ratio is marked `Data unavailable`.
+
+These indicators remain out of Phase 1 because they need judgment, licensing, or a more specific public feed before automation:
+
+- Fear & Greed Index
+- Shiller CAPE
+- Buffett Indicator
+- S&P 500 P/E
+- ISM PMI
+- NAAIM Exposure
+- Forward valuation indicators
+
+### How to update thresholds
+
+Open `scripts/update-market-signals.js` and find `fredIndicators`.
+
+Each indicator has a `thresholds` block for the family-facing text and, for automated indicators, an `evaluate` function that decides the Green, Yellow, or Red status.
+
+Example:
+
+```js
+thresholds: {
+  green: "VIX > 30",
+  yellow: "VIX 20-30",
+  red: "VIX < 15"
+},
+evaluate(value) {
+  if (value > 30) return "Green";
+  if (value >= 20) return "Yellow";
+  if (value < 15) return "Red";
+  return "Yellow";
+}
+```
+
+After changing thresholds, run the GitHub Action manually or run this locally:
+
+```sh
+node scripts/update-market-signals.js
+```
+
+### Manual indicator updates
+
+For indicators marked `"isManual": true`, update `currentValue`, `lastUpdated`, `status`, and `notes` directly in `data/market-signals.json`.
+
+Use only public educational notes. Do not store private account information, portfolio balances, login credentials, or personal financial details in these files.
+
+### Optional FRED API key
+
+The dashboard works without a FRED key because the updater falls back to public CSV endpoints.
+
+To use the official FRED API:
+
+1. Create a FRED API key from FRED.
+2. In GitHub, open the repository settings.
+3. Go to Secrets and variables, then Actions.
+4. Add a repository secret named `FRED_API_KEY`.
+5. Run the `Update Market Signals` workflow manually once to test it.
+
+Never paste the FRED key into `app.js`, `README.md`, `data/market-signals.json`, or any other public file.
+
+### Security notes
+
+The GitHub Actions workflow passes `FRED_API_KEY` from GitHub Secrets to the updater. The script has a public FRED CSV fallback for local testing, but secrets should still be used for official scheduled API calls. Do not commit API keys, passwords, private account information, or portfolio balances to the repository.
+
+This dashboard is for education, family learning, and long-term investing discussion only. It is not financial advice and should not trigger automatic buy or sell decisions.
+
 ## How to edit content
 
 Open `app.js` and edit the `familyData` array near the top of the file.

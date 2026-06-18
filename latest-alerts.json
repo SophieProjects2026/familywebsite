@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-06-17T02:34:24.545Z",
+  "educationalDisclaimer": "For education, family learning, and long-term investing discussion only. Not financial advice and not an automatic buy or sell signal.",
+  "alerts": [
+    {
+      "id": "credit-spreads",
+      "indicator": "Credit Spreads",
+      "status": "Green",
+      "latestValue": 1.53,
+      "dateUpdated": "2026-06-15",
+      "summary": "Credit Spreads is in a green learning zone based on the family dashboard thresholds.",
+      "reminder": "Educational family discussion only. Do not use this as an automatic buy or sell decision."
+    },
+    {
+      "id": "unemployment-trend",
+      "indicator": "Unemployment Trend",
+      "status": "Green",
+      "latestValue": 4.3,
+      "dateUpdated": "2026-05-01",
+      "summary": "Unemployment Trend is in a green learning zone based on the family dashboard thresholds.",
+      "reminder": "Educational family discussion only. Do not use this as an automatic buy or sell decision."
+    }
+  ]
+}

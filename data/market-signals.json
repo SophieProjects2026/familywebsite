@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T14:39:49.635Z",
+  "generatedAt": "2026-07-12T14:43:37.357Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -13,7 +13,7 @@
       "Unemployment Rate: Unemployment is stable at 4.2%."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-07-11",
+    "lastUpdated": "2026-07-12",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -23,7 +23,7 @@
       "group": "opportunityRadar",
       "currentValue": 4.54,
       "latestValue": 4.54,
-      "previousValue": 4.56,
+      "previousValue": 4.54,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
@@ -46,7 +46,7 @@
       "group": "opportunityRadar",
       "currentValue": 0.35,
       "latestValue": 0.35,
-      "previousValue": 0.38,
+      "previousValue": 0.35,
       "valueLabel": "percentage points",
       "status": "Yellow",
       "source": "FRED T10Y2Y",
@@ -166,7 +166,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-07-11",
+      "lastUpdated": "2026-07-12",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -189,7 +189,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-07-11",
+      "lastUpdated": "2026-07-12",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -212,7 +212,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-07-11",
+      "lastUpdated": "2026-07-12",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

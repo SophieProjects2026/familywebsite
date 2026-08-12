@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T12:05:33.866Z",
+  "generatedAt": "2026-08-12T12:05:48.291Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -9,13 +9,11 @@
     "message": "Stay with regular plan.",
     "meaning": "Mixed or normal market conditions.",
     "supportingIndicators": [
-      "Credit Spreads: Credit spreads are normal at 1.64 percentage points.",
+      "Credit Spreads: Credit spreads are normal at 1.62 percentage points.",
       "Unemployment Rate: Unemployment is stable at 4.1%."
     ],
-    "warningIndicators": [
-      "VIX: VIX is low at 14.9, suggesting possible complacency."
-    ],
-    "lastUpdated": "2026-08-11",
+    "warningIndicators": [],
+    "lastUpdated": "2026-08-12",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -23,21 +21,21 @@
       "id": "ten-year-treasury-yield",
       "name": "10-Year Treasury Yield",
       "group": "opportunityRadar",
-      "currentValue": 4.65,
-      "latestValue": 4.65,
-      "previousValue": 4.69,
+      "currentValue": 4.72,
+      "latestValue": 4.72,
+      "previousValue": 4.65,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
-      "lastUpdated": "2026-08-07",
+      "lastUpdated": "2026-08-10",
       "whyWeWatchIt": "The 10-year Treasury yield affects stock valuations, bond attractiveness, mortgage rates, and discount-rate discussions.",
       "thresholds": {
         "green": "Stable, falling, or below 4%",
         "yellow": "Elevated but not rapidly rising",
         "red": "Above 5% or up at least 1 percentage point in three months"
       },
-      "alertMessage": "10-year yield is elevated but not in the red zone at 4.65%.",
+      "alertMessage": "10-year yield is elevated but not in the red zone at 4.72%.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -46,21 +44,21 @@
       "id": "yield-curve",
       "name": "Yield Curve",
       "group": "opportunityRadar",
-      "currentValue": 0.47,
-      "latestValue": 0.47,
-      "previousValue": 0.46,
+      "currentValue": 0.48,
+      "latestValue": 0.48,
+      "previousValue": 0.47,
       "valueLabel": "percentage points",
       "status": "Yellow",
       "source": "FRED T10Y2Y",
       "sourceUrl": "https://fred.stlouisfed.org/series/T10Y2Y",
-      "lastUpdated": "2026-08-10",
+      "lastUpdated": "2026-08-11",
       "whyWeWatchIt": "The 10-year minus 2-year Treasury spread is a common recession and cycle-risk indicator.",
       "thresholds": {
         "green": "Above 0.50 percentage points",
         "yellow": "0 to 0.50 percentage points",
         "red": "Below 0, inverted curve"
       },
-      "alertMessage": "Yield curve is flat at 0.47 percentage points.",
+      "alertMessage": "Yield curve is flat at 0.48 percentage points.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -69,21 +67,21 @@
       "id": "credit-spreads",
       "name": "Credit Spreads",
       "group": "opportunityRadar",
-      "currentValue": 1.64,
-      "latestValue": 1.64,
-      "previousValue": 1.61,
+      "currentValue": 1.62,
+      "latestValue": 1.62,
+      "previousValue": 1.64,
       "valueLabel": "percentage points",
       "status": "Green",
       "source": "FRED BAA10Y",
       "sourceUrl": "https://fred.stlouisfed.org/series/BAA10Y",
-      "lastUpdated": "2026-08-07",
+      "lastUpdated": "2026-08-10",
       "whyWeWatchIt": "Credit spreads help show whether corporate bond markets are calm or signaling financial stress.",
       "thresholds": {
         "green": "Below 2 percentage points",
         "yellow": "2 to 3 percentage points",
         "red": "Above 3 percentage points"
       },
-      "alertMessage": "Credit spreads are normal at 1.64 percentage points.",
+      "alertMessage": "Credit spreads are normal at 1.62 percentage points.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -115,21 +113,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 14.9,
-      "latestValue": 14.9,
-      "previousValue": 15.15,
+      "currentValue": 15.46,
+      "latestValue": 15.46,
+      "previousValue": 14.9,
       "valueLabel": "index level",
-      "status": "Red",
+      "status": "Yellow",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-08-07",
+      "lastUpdated": "2026-08-10",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is low at 14.9, suggesting possible complacency.",
+      "alertMessage": "VIX is moderate at 15.46.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -140,7 +138,7 @@
       "group": "opportunityRadar",
       "currentValue": 119.06,
       "latestValue": 119.06,
-      "previousValue": 119.7,
+      "previousValue": 119.06,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED DTWEXBGS",
@@ -168,7 +166,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-08-11",
+      "lastUpdated": "2026-08-12",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -191,7 +189,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-08-11",
+      "lastUpdated": "2026-08-12",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -214,7 +212,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-08-11",
+      "lastUpdated": "2026-08-12",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

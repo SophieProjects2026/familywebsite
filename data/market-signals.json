@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T15:04:23.544Z",
+  "generatedAt": "2026-09-04T15:01:09.671Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -13,8 +13,10 @@
       "Unemployment Rate: Unemployment is stable at 4.1%.",
       "Dollar Index Proxy: Dollar proxy is stable or easing at 118.75."
     ],
-    "warningIndicators": [],
-    "lastUpdated": "2026-09-03",
+    "warningIndicators": [
+      "VIX: VIX is low at 14.32, suggesting possible complacency."
+    ],
+    "lastUpdated": "2026-09-04",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -24,12 +26,12 @@
       "group": "opportunityRadar",
       "currentValue": 4.79,
       "latestValue": 4.79,
-      "previousValue": 4.75,
+      "previousValue": 4.79,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
-      "lastUpdated": "2026-09-01",
+      "lastUpdated": "2026-09-02",
       "whyWeWatchIt": "The 10-year Treasury yield affects stock valuations, bond attractiveness, mortgage rates, and discount-rate discussions.",
       "thresholds": {
         "green": "Stable, falling, or below 4%",
@@ -45,21 +47,21 @@
       "id": "yield-curve",
       "name": "Yield Curve",
       "group": "opportunityRadar",
-      "currentValue": 0.4,
-      "latestValue": 0.4,
+      "currentValue": 0.43,
+      "latestValue": 0.43,
       "previousValue": 0.4,
       "valueLabel": "percentage points",
       "status": "Yellow",
       "source": "FRED T10Y2Y",
       "sourceUrl": "https://fred.stlouisfed.org/series/T10Y2Y",
-      "lastUpdated": "2026-09-02",
+      "lastUpdated": "2026-09-03",
       "whyWeWatchIt": "The 10-year minus 2-year Treasury spread is a common recession and cycle-risk indicator.",
       "thresholds": {
         "green": "Above 0.50 percentage points",
         "yellow": "0 to 0.50 percentage points",
         "red": "Below 0, inverted curve"
       },
-      "alertMessage": "Yield curve is flat at 0.4 percentage points.",
+      "alertMessage": "Yield curve is flat at 0.43 percentage points.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -70,12 +72,12 @@
       "group": "opportunityRadar",
       "currentValue": 1.58,
       "latestValue": 1.58,
-      "previousValue": 1.59,
+      "previousValue": 1.58,
       "valueLabel": "percentage points",
       "status": "Green",
       "source": "FRED BAA10Y",
       "sourceUrl": "https://fred.stlouisfed.org/series/BAA10Y",
-      "lastUpdated": "2026-09-01",
+      "lastUpdated": "2026-09-02",
       "whyWeWatchIt": "Credit spreads help show whether corporate bond markets are calm or signaling financial stress.",
       "thresholds": {
         "green": "Below 2 percentage points",
@@ -98,7 +100,7 @@
       "status": "Green",
       "source": "FRED UNRATE",
       "sourceUrl": "https://fred.stlouisfed.org/series/UNRATE",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-08-01",
       "whyWeWatchIt": "The unemployment rate helps the family discuss labor-market strength and possible recession risk.",
       "thresholds": {
         "green": "Stable, up 0.2 percentage points or less over three months",
@@ -114,21 +116,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 15.2,
-      "latestValue": 15.2,
-      "previousValue": 16.34,
+      "currentValue": 14.32,
+      "latestValue": 14.32,
+      "previousValue": 15.2,
       "valueLabel": "index level",
-      "status": "Yellow",
+      "status": "Red",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-09-02",
+      "lastUpdated": "2026-09-03",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is moderate at 15.2.",
+      "alertMessage": "VIX is low at 14.32, suggesting possible complacency.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -167,7 +169,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-03",
+      "lastUpdated": "2026-09-04",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -190,7 +192,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-03",
+      "lastUpdated": "2026-09-04",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -213,7 +215,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-03",
+      "lastUpdated": "2026-09-04",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

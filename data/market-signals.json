@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T14:15:17.404Z",
+  "generatedAt": "2026-09-13T14:57:13.621Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -14,7 +14,7 @@
       "Dollar Index Proxy: Dollar proxy is stable or easing at 118.07."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-09-12",
+    "lastUpdated": "2026-09-13",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -24,7 +24,7 @@
       "group": "opportunityRadar",
       "currentValue": 4.95,
       "latestValue": 4.95,
-      "previousValue": 4.83,
+      "previousValue": 4.95,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
@@ -47,7 +47,7 @@
       "group": "opportunityRadar",
       "currentValue": 0.33,
       "latestValue": 0.33,
-      "previousValue": 0.39,
+      "previousValue": 0.33,
       "valueLabel": "percentage points",
       "status": "Yellow",
       "source": "FRED T10Y2Y",
@@ -70,7 +70,7 @@
       "group": "opportunityRadar",
       "currentValue": 1.51,
       "latestValue": 1.51,
-      "previousValue": 1.55,
+      "previousValue": 1.51,
       "valueLabel": "percentage points",
       "status": "Green",
       "source": "FRED BAA10Y",
@@ -167,7 +167,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-12",
+      "lastUpdated": "2026-09-13",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -190,7 +190,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-12",
+      "lastUpdated": "2026-09-13",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -213,7 +213,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-12",
+      "lastUpdated": "2026-09-13",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

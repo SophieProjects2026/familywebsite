@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T14:57:13.621Z",
+  "generatedAt": "2026-09-14T16:59:40.867Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -14,7 +14,7 @@
       "Dollar Index Proxy: Dollar proxy is stable or easing at 118.07."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-09-13",
+    "lastUpdated": "2026-09-14",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -114,21 +114,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 17.84,
-      "latestValue": 17.84,
+      "currentValue": 15.84,
+      "latestValue": 15.84,
       "previousValue": 17.84,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-09-10",
+      "lastUpdated": "2026-09-11",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is moderate at 17.84.",
+      "alertMessage": "VIX is moderate at 15.84.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -167,7 +167,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-13",
+      "lastUpdated": "2026-09-14",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -190,7 +190,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-13",
+      "lastUpdated": "2026-09-14",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -213,7 +213,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-13",
+      "lastUpdated": "2026-09-14",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

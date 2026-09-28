@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T15:42:18.939Z",
+  "generatedAt": "2026-09-28T18:39:18.169Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -17,7 +17,7 @@
       "10-Year Treasury Yield: 10-year yield is restrictive or rising quickly at 5.18%.",
       "VIX: VIX is low at 14.21, suggesting possible complacency."
     ],
-    "lastUpdated": "2026-09-27",
+    "lastUpdated": "2026-09-28",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -170,7 +170,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-27",
+      "lastUpdated": "2026-09-28",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -193,7 +193,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-27",
+      "lastUpdated": "2026-09-28",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -216,7 +216,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-09-27",
+      "lastUpdated": "2026-09-28",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

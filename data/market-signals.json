@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T17:13:49.909Z",
+  "generatedAt": "2026-10-29T17:28:40.262Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -13,7 +13,7 @@
       "Unemployment Rate: Unemployment is stable at 4.2%."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-10-28",
+    "lastUpdated": "2026-10-29",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -21,21 +21,21 @@
       "id": "ten-year-treasury-yield",
       "name": "10-Year Treasury Yield",
       "group": "opportunityRadar",
-      "currentValue": 5,
-      "latestValue": 5,
+      "currentValue": 4.99,
+      "latestValue": 4.99,
       "previousValue": 5,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
-      "lastUpdated": "2026-10-26",
+      "lastUpdated": "2026-10-27",
       "whyWeWatchIt": "The 10-year Treasury yield affects stock valuations, bond attractiveness, mortgage rates, and discount-rate discussions.",
       "thresholds": {
         "green": "Stable, falling, or below 4%",
         "yellow": "Elevated but not rapidly rising",
         "red": "Above 5% or up at least 1 percentage point in three months"
       },
-      "alertMessage": "10-year yield is elevated but not in the red zone at 5%.",
+      "alertMessage": "10-year yield is elevated but not in the red zone at 4.99%.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -44,21 +44,21 @@
       "id": "yield-curve",
       "name": "Yield Curve",
       "group": "opportunityRadar",
-      "currentValue": 0.29,
-      "latestValue": 0.29,
-      "previousValue": 0.32,
+      "currentValue": 0.38,
+      "latestValue": 0.38,
+      "previousValue": 0.29,
       "valueLabel": "percentage points",
       "status": "Yellow",
       "source": "FRED T10Y2Y",
       "sourceUrl": "https://fred.stlouisfed.org/series/T10Y2Y",
-      "lastUpdated": "2026-10-27",
+      "lastUpdated": "2026-10-28",
       "whyWeWatchIt": "The 10-year minus 2-year Treasury spread is a common recession and cycle-risk indicator.",
       "thresholds": {
         "green": "Above 0.50 percentage points",
         "yellow": "0 to 0.50 percentage points",
         "red": "Below 0, inverted curve"
       },
-      "alertMessage": "Yield curve is flat at 0.29 percentage points.",
+      "alertMessage": "Yield curve is flat at 0.38 percentage points.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -69,7 +69,7 @@
       "group": "opportunityRadar",
       "currentValue": 1.45,
       "latestValue": 1.45,
-      "previousValue": 1.47,
+      "previousValue": 1.45,
       "valueLabel": "percentage points",
       "status": "Green",
       "source": "FRED BAA10Y",
@@ -113,21 +113,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 17.52,
-      "latestValue": 17.52,
-      "previousValue": 18.39,
+      "currentValue": 16.91,
+      "latestValue": 16.91,
+      "previousValue": 17.52,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-10-27",
+      "lastUpdated": "2026-10-28",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is moderate at 17.52.",
+      "alertMessage": "VIX is moderate at 16.91.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -166,7 +166,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-10-28",
+      "lastUpdated": "2026-10-29",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -189,7 +189,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-10-28",
+      "lastUpdated": "2026-10-29",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -212,7 +212,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-10-28",
+      "lastUpdated": "2026-10-29",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

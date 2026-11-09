@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T17:09:01.662Z",
+  "generatedAt": "2026-11-09T21:31:18.191Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -13,7 +13,7 @@
       "Unemployment Rate: Unemployment is stable at 4.1%."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-11-08",
+    "lastUpdated": "2026-11-09",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -21,21 +21,21 @@
       "id": "ten-year-treasury-yield",
       "name": "10-Year Treasury Yield",
       "group": "opportunityRadar",
-      "currentValue": 4.84,
-      "latestValue": 4.84,
+      "currentValue": 4.86,
+      "latestValue": 4.86,
       "previousValue": 4.84,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
-      "lastUpdated": "2026-11-05",
+      "lastUpdated": "2026-11-06",
       "whyWeWatchIt": "The 10-year Treasury yield affects stock valuations, bond attractiveness, mortgage rates, and discount-rate discussions.",
       "thresholds": {
         "green": "Stable, falling, or below 4%",
         "yellow": "Elevated but not rapidly rising",
         "red": "Above 5% or up at least 1 percentage point in three months"
       },
-      "alertMessage": "10-year yield is elevated but not in the red zone at 4.84%.",
+      "alertMessage": "10-year yield is elevated but not in the red zone at 4.86%.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -113,21 +113,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 28.18,
-      "latestValue": 28.18,
+      "currentValue": 25.64,
+      "latestValue": 25.64,
       "previousValue": 28.18,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-11-05",
+      "lastUpdated": "2026-11-06",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is moderate at 28.18.",
+      "alertMessage": "VIX is moderate at 25.64.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -136,21 +136,21 @@
       "id": "dollar-index-proxy",
       "name": "Dollar Index Proxy",
       "group": "opportunityRadar",
-      "currentValue": 121.67,
-      "latestValue": 121.67,
+      "currentValue": 121.88,
+      "latestValue": 121.88,
       "previousValue": 121.67,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED DTWEXBGS",
       "sourceUrl": "https://fred.stlouisfed.org/series/DTWEXBGS",
-      "lastUpdated": "2026-10-30",
+      "lastUpdated": "2026-11-06",
       "whyWeWatchIt": "A stronger dollar can affect commodities, international earnings, and global financial conditions.",
       "thresholds": {
         "green": "Stable or falling over three months",
         "yellow": "Moderately rising over three months",
         "red": "Rising more than 5% over three months"
       },
-      "alertMessage": "Dollar proxy is moderately firm at 121.67.",
+      "alertMessage": "Dollar proxy is moderately firm at 121.88.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -166,7 +166,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-08",
+      "lastUpdated": "2026-11-09",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -189,7 +189,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-08",
+      "lastUpdated": "2026-11-09",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -212,7 +212,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-08",
+      "lastUpdated": "2026-11-09",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",

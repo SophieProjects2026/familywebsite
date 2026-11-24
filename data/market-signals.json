@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T22:47:17.534Z",
+  "generatedAt": "2026-11-24T21:24:36.847Z",
   "phase": "Phase 1",
   "educationalDisclaimer": "This dashboard is for family education and decision support. It does not provide automatic financial advice or account-specific recommendations.",
   "actionSignal": {
@@ -10,11 +10,10 @@
     "meaning": "Mixed or normal market conditions.",
     "supportingIndicators": [
       "Credit Spreads: Credit spreads are normal at 1.61 percentage points.",
-      "Unemployment Rate: Unemployment is stable at 4.1%.",
-      "VIX: VIX is high at 35.89, showing elevated fear."
+      "Unemployment Rate: Unemployment is stable at 4.1%."
     ],
     "warningIndicators": [],
-    "lastUpdated": "2026-11-23",
+    "lastUpdated": "2026-11-24",
     "notes": "Editable by K/Sophie."
   },
   "indicators": [
@@ -24,12 +23,12 @@
       "group": "opportunityRadar",
       "currentValue": 4.92,
       "latestValue": 4.92,
-      "previousValue": 5.04,
+      "previousValue": 4.92,
       "valueLabel": "percent",
       "status": "Yellow",
       "source": "FRED DGS10",
       "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
-      "lastUpdated": "2026-11-20",
+      "lastUpdated": "2026-11-23",
       "whyWeWatchIt": "The 10-year Treasury yield affects stock valuations, bond attractiveness, mortgage rates, and discount-rate discussions.",
       "thresholds": {
         "green": "Stable, falling, or below 4%",
@@ -70,7 +69,7 @@
       "group": "opportunityRadar",
       "currentValue": 1.61,
       "latestValue": 1.61,
-      "previousValue": 1.56,
+      "previousValue": 1.61,
       "valueLabel": "percentage points",
       "status": "Green",
       "source": "FRED BAA10Y",
@@ -114,21 +113,21 @@
       "id": "vix",
       "name": "VIX",
       "group": "opportunityRadar",
-      "currentValue": 35.89,
-      "latestValue": 35.89,
-      "previousValue": 28.44,
+      "currentValue": 26.62,
+      "latestValue": 26.62,
+      "previousValue": 35.89,
       "valueLabel": "index level",
-      "status": "Green",
+      "status": "Yellow",
       "source": "FRED VIXCLS / CBOE",
       "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
-      "lastUpdated": "2026-11-20",
+      "lastUpdated": "2026-11-23",
       "whyWeWatchIt": "VIX helps frame whether market fear is creating opportunity or whether calm conditions may signal complacency.",
       "thresholds": {
         "green": "Above 30, fear / possible opportunity",
         "yellow": "20 to 30, elevated volatility",
         "red": "Below 15, complacency"
       },
-      "alertMessage": "VIX is high at 35.89, showing elevated fear.",
+      "alertMessage": "VIX is moderate at 26.62.",
       "notes": "Editable by K/Sophie.",
       "isManual": false,
       "fetchStatus": "live"
@@ -139,7 +138,7 @@
       "group": "opportunityRadar",
       "currentValue": 123.6,
       "latestValue": 123.6,
-      "previousValue": 122.65,
+      "previousValue": 123.6,
       "valueLabel": "index level",
       "status": "Yellow",
       "source": "FRED DTWEXBGS",
@@ -167,7 +166,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-23",
+      "lastUpdated": "2026-11-24",
       "whyWeWatchIt": "The gold/oil ratio can help discuss inflation, commodity stress, and relative real-asset pricing.",
       "thresholds": {
         "green": "Above 25",
@@ -190,7 +189,7 @@
       "status": "Manual",
       "source": "Manual until reliable public source is approved",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-23",
+      "lastUpdated": "2026-11-24",
       "whyWeWatchIt": "The gold/silver ratio can help discuss precious-metal sentiment and economic-cycle expectations.",
       "thresholds": {
         "green": "Above 85",
@@ -213,7 +212,7 @@
       "status": "Manual",
       "source": "Manual family review",
       "sourceUrl": "",
-      "lastUpdated": "2026-11-23",
+      "lastUpdated": "2026-11-24",
       "whyWeWatchIt": "Phase 1 does not automate Buffett Indicator, Shiller CAPE, Forward P/E, or Equity Risk Premium yet.",
       "thresholds": {
         "green": "Valuation improving",
